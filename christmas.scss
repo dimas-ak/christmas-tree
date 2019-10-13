@@ -1,0 +1,53 @@
+html, body{margin:0;padding:0;}
+
+@mixin animation($str) 
+{
+    -webkit-animation: #{$str};  
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};  
+    animation: #{$str};
+}
+
+@mixin keyframes($name-animation)
+{
+    @-webkit-keyframes #{$name-animation} { @content; }
+    @-moz-keyframes    #{$name-animation} { @content; }
+    @-ms-keyframes     #{$name-animation} { @content; }
+    @-o-keyframes      #{$name-animation} { @content; }
+    @keyframes         #{$name-animation} { @content; }
+}
+
+.container
+{
+    padding:10px;
+    .wrap
+    {
+        text-align:center;height:12px;
+        color:#7f8c8d;
+        &:first-child
+        {
+            margin-bottom:7px;
+        }
+        
+        .first
+        {
+            font-size:35pt;
+        }
+
+        .star
+        {
+            font-size:30pt;font-weight:bold;
+            &.aktif{@include animation("star 1s infinite");}
+        }
+        .first, .star {display:inline-block;}
+    }
+}
+
+@include keyframes("star")
+{
+    0%{text-shadow:0 0 5px #2ecc71;}
+    50%{text-shadow:0 0 5px #e74c3c;}
+    100%{text-shadow:0 0 5px #2ecc71;}
+
+}
